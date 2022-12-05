@@ -20,7 +20,7 @@ function App() {
     const [showInstructionsModal, setShowInstructionsModal] = useState(false);
     const [showRevenueRankModal, setShowRevenueRankModal] = useState(false);
 
-    const isHalfScreen = window.innerHeight <= 570;
+    const isHalfScreen = window.innerHeight <= 400;
 
     return (
         <>
@@ -38,12 +38,12 @@ function App() {
                         alt=""
                     />
                 </>
-                <div className="pt-[50px]">
+                <div className={`${isHalfScreen ? "pt-[10px]" : "pt-[50px]"}`}>
                     {/* For Less height screen */}
                     {/* Results */}
                     {isHalfScreen && (
-                        <div className="absolute left-[2%] top-[20%] flex flex-col items-center py-[2px] px-[10px] bg-[#7FC2F0] rounded-md border-2 border-black z-50">
-                            <p className="text-black text-[12px] font-semibold">
+                        <div className="absolute left-[2%] top-[20%] flex flex-col items-center py-[2px] px-[2px] bg-[#7FC2F0] rounded-md border-2 border-black z-50">
+                            <p className="text-black text-[11px] font-bold">
                                 Results:
                             </p>
                             <div className="py-[5px] flex flex-col items-center gap-[4px]">
@@ -57,11 +57,11 @@ function App() {
                         </div>
                     )}
                     {isHalfScreen && (
-                        <div className="flex flex-col items-center justify-between gap-[10px] absolute right-[2%] top-[20%] z-50">
-                            <AmountBox red point={100} />
-                            <AmountBox point={1000} />
-                            <AmountBox point={10000} />
-                            <AmountBox point={100000} />
+                        <div className="flex flex-col items-center justify-between gap-[10px] absolute right-[2%] top-[19%] z-50">
+                            <AmountBox short red point={100} />
+                            <AmountBox short point={1000} />
+                            <AmountBox short point={10000} />
+                            <AmountBox short point={100000} />
                         </div>
                     )}
 
@@ -89,7 +89,9 @@ function App() {
                     {/* Main Game */}
                     <div
                         className={`relative w-max max-w-[95%] mx-auto scale-75 ${
-                            isHalfScreen ? "scale-80" : "scale-100 mt-[50px]"
+                            isHalfScreen
+                                ? "scale-[55%] -mt-[45px]"
+                                : "scale-100 mt-[50px]"
                         }`}
                     >
                         <img
@@ -216,7 +218,7 @@ function App() {
                     {/* Overlay */}
                     <div
                         className={`bg-[#FF6855] w-full h-[20px] ${
-                            isHalfScreen ? "-mt-[60px]" : "-mt-[10px]"
+                            isHalfScreen ? "-mt-[115px]" : "-mt-[10px]"
                         } rounded-tl-[25px] rounded-tr-[25px]`}
                     ></div>
 
