@@ -14,13 +14,14 @@ import ResultBox from "./components/ResultBox";
 import InstructionsModal from "./components/InstructionsModal";
 import { useState } from "react";
 import RevenueRankModal from "./components/RevenueRankModal";
+import DiamondIcon from "./assets/diamond.svg";
 
 function App() {
     const [showInstructionsModal, setShowInstructionsModal] = useState(false);
     const [showRevenueRankModal, setShowRevenueRankModal] = useState(false);
     return (
         <>
-            <div className="bg-[#FBE170] min-h-screen w-full h-screen flex flex-col">
+            <div className="bg-[#FBE170] w-full h-screen flex flex-col">
                 {/* Clouds */}
                 <>
                     <img
@@ -122,7 +123,7 @@ function App() {
                     <div className="bg-[#FF6855] w-full h-[20px] -mt-[10px] rounded-tl-[25px] rounded-tr-[25px]"></div>
 
                     {/* Main */}
-                    <div className="bg-[#E33D21] h-full w-full px-[20px] py-[10px]">
+                    <div className="bg-[#E33D21] w-full px-[20px] py-[10px]">
                         <div className="flex items-center justify-between">
                             {/* Left Profile and amount */}
                             <div className="flex items-start">
@@ -132,6 +133,10 @@ function App() {
                                         100Cr
                                     </p>
                                     <div className="w-[100px] h-[20px] bg-white rounded-tr-[20px] rounded-br-[20px] flex items-center">
+                                        <img
+                                            className="ml-[5px]"
+                                            src={DiamondIcon}
+                                        />
                                         <p className="text-[12px] ml-[10px]">
                                             80
                                         </p>
@@ -144,6 +149,10 @@ function App() {
                                     Today's Revenue:
                                 </p>
                                 <div className="w-[100px] bg-white h-[20px] rounded-[20px] flex items-center justify-center">
+                                    <img
+                                        className="mr-[5px]"
+                                        src={DiamondIcon}
+                                    />
                                     <p className="">0</p>
                                 </div>
                             </div>
@@ -165,7 +174,7 @@ function App() {
                         </div>
 
                         {/* TWO BIG BOX */}
-                        <div className="flex items-center gap-[15px] mt-[10px]">
+                        <div className="flex items-center gap-[10px] mt-[10px]">
                             <div
                                 onClick={() => setShowRevenueRankModal(true)}
                                 className="w-[50%] h-[55px] bg-white rounded-md p-[5px] flex items-center gap-[4px] justify-between"
@@ -174,7 +183,12 @@ function App() {
                                     <div className="rounded-md h-full w-[45px] border-2 border-red-500"></div>
                                     <div className="">
                                         <p className="text-[14px]">প্রবাস...</p>
-                                        <p className="text-[12px]">5,020,500</p>
+                                        <div className="flex items-center gap-[4px]">
+                                            <img src={DiamondIcon} />
+                                            <p className="text-[12px]">
+                                                5,020,500
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <svg

@@ -1,4 +1,5 @@
 import React from "react";
+import DiamondIcon from "../assets/diamond.svg";
 
 const AmountBox = ({ point, yellow }) => {
     return (
@@ -6,8 +7,10 @@ const AmountBox = ({ point, yellow }) => {
             <div
                 className={`h-[50%] ${
                     yellow ? "bg-yellow-300" : "bg-[#80C1F0]"
-                }`}
-            ></div>
+                } flex items-center justify-center`}
+            >
+                <img src={DiamondIcon} alt="" />
+            </div>
             <div className="h-[50%] bg-white">
                 <p className="text-center font-bold">{point}</p>
             </div>
