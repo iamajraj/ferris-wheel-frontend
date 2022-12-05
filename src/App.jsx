@@ -19,6 +19,10 @@ import DiamondIcon from "./assets/diamond.svg";
 function App() {
     const [showInstructionsModal, setShowInstructionsModal] = useState(false);
     const [showRevenueRankModal, setShowRevenueRankModal] = useState(false);
+
+    const isHalfScreen = window.innerHeight <= 655;
+    console.log(isHalfScreen);
+
     return (
         <>
             <div className="bg-[#FBE170] w-full h-screen flex flex-col">
@@ -36,6 +40,32 @@ function App() {
                     />
                 </>
                 <div className="pt-[50px]">
+                    {/* For Less height screen */}
+                    {/* Results */}
+                    {isHalfScreen && (
+                        <div className="absolute left-[2%] top-[20%] flex flex-col items-center py-[2px] px-[10px] bg-[#7FC2F0] rounded-md border-2 border-black z-50">
+                            <p className="text-black text-[12px] font-semibold">
+                                Results:
+                            </p>
+                            <div className="py-[5px] flex flex-col items-center gap-[4px]">
+                                <ResultBox icon={BroccoliIcon} />
+                                <ResultBox icon={BurgerIcon} />
+                                <ResultBox icon={SushiIcon} />
+                                <ResultBox icon={PizzaIcon} />
+                                <ResultBox icon={BreadIcon} />
+                                <ResultBox icon={SushiIcon} />
+                            </div>
+                        </div>
+                    )}
+                    {isHalfScreen && (
+                        <div className="flex flex-col items-center justify-between gap-[10px] absolute right-[2%] top-[20%] z-50">
+                            <AmountBox red point={100} />
+                            <AmountBox point={1000} />
+                            <AmountBox point={10000} />
+                            <AmountBox point={100000} />
+                        </div>
+                    )}
+
                     {/* Top Bar */}
                     <div className="relative px-[20px] flex items-center justify-between z-10">
                         <div className="flex items-start gap-[5px]">
@@ -109,20 +139,80 @@ function App() {
                         </>
                         {/* Amount Box */}
                         <>
-                            <div className="flex items-center justify-between gap-[10px] absolute bottom-[5px] w-[85%] left-[8%]">
-                                <AmountBox yellow point={100} />
-                                <AmountBox point={1000} />
-                                <AmountBox point={10000} />
-                                <AmountBox point={100000} />
-                            </div>
+                            {!isHalfScreen && (
+                                <div className="flex items-center justify-between gap-[10px] absolute bottom-[5px] w-[85%] left-[8%]">
+                                    <AmountBox yellow point={100} />
+                                    <AmountBox point={1000} />
+                                    <AmountBox point={10000} />
+                                    <AmountBox point={100000} />
+                                </div>
+                            )}
                         </>
-                    </div>
-                    {/* Bottom Controls */}
 
+                        {/* For Less Height */}
+                        {/* History and Revenue Rank */}
+                        {isHalfScreen && (
+                            <div className="absolute bottom-[6px] left-[11%] flex items-center gap-[10px] mt-[10px]">
+                                <div
+                                    onClick={() =>
+                                        setShowRevenueRankModal(true)
+                                    }
+                                    className="w-[50%] h-[55px] bg-white rounded-md p-[5px] flex items-center gap-[4px] justify-between"
+                                >
+                                    <div className="flex h-full gap-[5px]">
+                                        <div className="rounded-md h-full w-[45px] border-2 border-red-500"></div>
+                                        <div className="">
+                                            <p className="text-[14px]">
+                                                প্রবাস...
+                                            </p>
+                                            <div className="flex items-center gap-[4px]">
+                                                <img src={DiamondIcon} />
+                                                <p className="text-[12px]">
+                                                    5,020,500
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        className="w-6 h-6"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                                        />
+                                    </svg>
+                                </div>
+                                <div className="w-[50%] h-[55px] bg-white rounded-md flex items-center justify-center">
+                                    <p className="">My History</p>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        className="w-6 h-6 ml-[15px]"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Bottom Controls */}
                     {/* Overlay */}
                     <div className="bg-[#FF6855] w-full h-[20px] -mt-[10px] rounded-tl-[25px] rounded-tr-[25px]"></div>
 
-                    {/* Main */}
                     <div className="bg-[#E33D21] w-full px-[20px] py-[10px]">
                         <div className="flex items-center justify-between">
                             {/* Left Profile and amount */}
@@ -159,71 +249,79 @@ function App() {
                         </div>
 
                         {/* RESULTS */}
-                        <div className="mt-[10px] flex items-center py-[2px] px-[10px] bg-[#FF684B] rounded-md">
-                            <p className="text-white text-[12px] font-semibold">
-                                Results:
-                            </p>
-                            <div className="py-[5px] ml-[10px] flex items-center gap-[4px]">
-                                <ResultBox icon={BroccoliIcon} />
-                                <ResultBox icon={BurgerIcon} />
-                                <ResultBox icon={SushiIcon} />
-                                <ResultBox icon={PizzaIcon} />
-                                <ResultBox icon={BreadIcon} />
-                                <ResultBox icon={SushiIcon} />
+                        {!isHalfScreen && (
+                            <div className="mt-[10px] flex items-center py-[2px] px-[10px] bg-[#FF684B] rounded-md">
+                                <p className="text-white text-[12px] font-semibold">
+                                    Results:
+                                </p>
+                                <div className="py-[5px] ml-[10px] flex items-center gap-[4px]">
+                                    <ResultBox icon={BroccoliIcon} />
+                                    <ResultBox icon={BurgerIcon} />
+                                    <ResultBox icon={SushiIcon} />
+                                    <ResultBox icon={PizzaIcon} />
+                                    <ResultBox icon={BreadIcon} />
+                                    <ResultBox icon={SushiIcon} />
+                                </div>
                             </div>
-                        </div>
+                        )}
 
                         {/* TWO BIG BOX */}
-                        <div className="flex items-center gap-[10px] mt-[10px]">
-                            <div
-                                onClick={() => setShowRevenueRankModal(true)}
-                                className="w-[50%] h-[55px] bg-white rounded-md p-[5px] flex items-center gap-[4px] justify-between"
-                            >
-                                <div className="flex h-full gap-[5px]">
-                                    <div className="rounded-md h-full w-[45px] border-2 border-red-500"></div>
-                                    <div className="">
-                                        <p className="text-[14px]">প্রবাস...</p>
-                                        <div className="flex items-center gap-[4px]">
-                                            <img src={DiamondIcon} />
-                                            <p className="text-[12px]">
-                                                5,020,500
+                        {!isHalfScreen && (
+                            <div className="flex items-center gap-[10px] mt-[10px]">
+                                <div
+                                    onClick={() =>
+                                        setShowRevenueRankModal(true)
+                                    }
+                                    className="w-[50%] h-[55px] bg-white rounded-md p-[5px] flex items-center gap-[4px] justify-between"
+                                >
+                                    <div className="flex h-full gap-[5px]">
+                                        <div className="rounded-md h-full w-[45px] border-2 border-red-500"></div>
+                                        <div className="">
+                                            <p className="text-[14px]">
+                                                প্রবাস...
                                             </p>
+                                            <div className="flex items-center gap-[4px]">
+                                                <img src={DiamondIcon} />
+                                                <p className="text-[12px]">
+                                                    5,020,500
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        className="w-6 h-6"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                                        />
+                                    </svg>
                                 </div>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                                    />
-                                </svg>
+                                <div className="w-[50%] h-[55px] bg-white rounded-md flex items-center justify-center">
+                                    <p className="">My History</p>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        className="w-6 h-6 ml-[15px]"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                                        />
+                                    </svg>
+                                </div>
                             </div>
-                            <div className="w-[50%] h-[55px] bg-white rounded-md flex items-center justify-center">
-                                <p className="">My History</p>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    className="w-6 h-6 ml-[15px]"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                                    />
-                                </svg>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>
