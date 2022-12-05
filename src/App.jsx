@@ -20,8 +20,7 @@ function App() {
     const [showInstructionsModal, setShowInstructionsModal] = useState(false);
     const [showRevenueRankModal, setShowRevenueRankModal] = useState(false);
 
-    const isHalfScreen = window.innerHeight <= 655;
-    console.log(isHalfScreen);
+    const isHalfScreen = window.innerHeight <= 570;
 
     return (
         <>
@@ -88,7 +87,11 @@ function App() {
                         </div>
                     </div>
                     {/* Main Game */}
-                    <div className="relative w-max max-w-[95%] mx-auto mt-[50px]">
+                    <div
+                        className={`relative w-max max-w-[95%] mx-auto scale-75 ${
+                            isHalfScreen ? "scale-80" : "scale-100 mt-[50px]"
+                        }`}
+                    >
                         <img
                             className="w-full max-h-[500px]"
                             src={gameBody}
@@ -211,7 +214,11 @@ function App() {
 
                     {/* Bottom Controls */}
                     {/* Overlay */}
-                    <div className="bg-[#FF6855] w-full h-[20px] -mt-[10px] rounded-tl-[25px] rounded-tr-[25px]"></div>
+                    <div
+                        className={`bg-[#FF6855] w-full h-[20px] ${
+                            isHalfScreen ? "-mt-[60px]" : "-mt-[10px]"
+                        } rounded-tl-[25px] rounded-tr-[25px]`}
+                    ></div>
 
                     <div className="bg-[#E33D21] w-full px-[20px] py-[10px]">
                         <div className="flex items-center justify-between">
