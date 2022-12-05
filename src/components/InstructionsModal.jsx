@@ -2,7 +2,6 @@ import React from "react";
 
 const InstructionsModal = ({ setShow }) => {
     function closeModal(e) {
-        console.log(e.currentTarget);
         if (e.target === e.currentTarget) {
             setShow(false);
         }

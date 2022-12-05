@@ -17,7 +17,7 @@ import RevenueRankModal from "./components/RevenueRankModal";
 
 function App() {
     const [showInstructionsModal, setShowInstructionsModal] = useState(false);
-    const [showRevenueRankModal, setShowRevenueRankModal] = useState(true);
+    const [showRevenueRankModal, setShowRevenueRankModal] = useState(false);
     return (
         <>
             <div className="bg-[#FBE170] min-h-screen w-full h-screen flex flex-col">
@@ -183,7 +183,7 @@ function App() {
                                     viewBox="0 0 24 24"
                                     stroke-width="1.5"
                                     stroke="currentColor"
-                                    class="w-6 h-6"
+                                    className="w-6 h-6"
                                 >
                                     <path
                                         stroke-linecap="round"
@@ -200,7 +200,7 @@ function App() {
                                     viewBox="0 0 24 24"
                                     stroke-width="1.5"
                                     stroke="currentColor"
-                                    class="w-6 h-6 ml-[15px]"
+                                    className="w-6 h-6 ml-[15px]"
                                 >
                                     <path
                                         stroke-linecap="round"

@@ -2,7 +2,6 @@ import React from "react";
 
 const RevenueRankModal = ({ setShow }) => {
     function closeModal(e) {
-        console.log(e.currentTarget);
         if (e.target === e.currentTarget) {
             setShow(false);
         }
@@ -22,7 +21,7 @@ const RevenueRankModal = ({ setShow }) => {
                     viewBox="0 0 24 24"
                     stroke-width="2"
                     stroke="currentColor"
-                    class="w-6 h-6 absolute text-white right-0"
+                    className="w-6 h-6 absolute text-white right-0"
                     onClick={() => setShow(false)}
                 >
                     <path
