@@ -53,10 +53,7 @@ function App() {
                                 onClick={() => setShowInstructionsModal(true)}
                                 className="w-[32px] h-[32px] rounded-full bg-[#0B325B] border-[3px] relative border-[#2D8FD5] before:content-['Rules'] before:absolute before:bottom-[-10px] before:left-[-3px] before:text-[9px] before:px-[5px] before:text-white before:bg-[#006BBB] before:rounded-md"
                             ></div>
-                            <div
-                                onClick={() => setShowRevenueRankModal(true)}
-                                className="w-[32px] h-[32px] rounded-full bg-[#0B325B] border-[3px] relative border-[#2D8FD5] before:content-['Settings'] before:absolute before:bottom-[-10px] before:left-[-8px] before:text-[9px] before:px-[5px] before:text-white before:bg-[#006BBB] before:rounded-md"
-                            ></div>
+                            <div className="w-[32px] h-[32px] rounded-full bg-[#0B325B] border-[3px] relative border-[#2D8FD5] before:content-['Settings'] before:absolute before:bottom-[-10px] before:left-[-8px] before:text-[9px] before:px-[5px] before:text-white before:bg-[#006BBB] before:rounded-md"></div>
                         </div>
                     </div>
                     {/* Main Game */}
@@ -169,7 +166,10 @@ function App() {
 
                         {/* TWO BIG BOX */}
                         <div className="flex items-center gap-[15px] mt-[10px]">
-                            <div className="w-[50%] h-[55px] bg-white rounded-md p-[5px] flex items-center gap-[4px] justify-between">
+                            <div
+                                onClick={() => setShowRevenueRankModal(true)}
+                                className="w-[50%] h-[55px] bg-white rounded-md p-[5px] flex items-center gap-[4px] justify-between"
+                            >
                                 <div className="flex h-full gap-[5px]">
                                     <div className="rounded-md h-full w-[45px] border-2 border-red-500"></div>
                                     <div className="">
